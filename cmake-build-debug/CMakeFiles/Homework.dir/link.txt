@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Homework.dir/MAIN.cpp.o  -o Homework 

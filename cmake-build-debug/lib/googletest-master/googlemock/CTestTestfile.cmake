@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/ihor/Coding/CLionProjects/Lab1/lib/googletest-master/googlemock
-# Build directory: /home/ihor/Coding/CLionProjects/Lab1/cmake-build-debug/lib/googletest-master/googlemock
+# Source directory: C:/Users/aaade/Desktop/programs/OOP/Lab1/lib/googletest-master/googlemock
+# Build directory: C:/Users/aaade/Desktop/programs/OOP/Lab1/cmake-build-debug/lib/googletest-master/googlemock
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

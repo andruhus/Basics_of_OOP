@@ -21,9 +21,9 @@ public:
 
 
     // Add/Remove vertix or edge
-    void AddVertex();
-    void AddEdge(int i_vetrex,int j_vertex);
-    void RemoveVertex(int vertex);
+    void AddVertex(Data value);
+    void AddEdge(int i_vetrex, int j_vertex);
+    void RemoveVertex(int index_vertex);
     void RemoveEdge();
 
 

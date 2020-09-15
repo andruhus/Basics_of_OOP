@@ -5,12 +5,21 @@
 #ifndef HOMEWORK_GRAPH_H
 #define HOMEWORK_GRAPH_H
 #include <vector>
+using namespace std;
 
+template <class Data>
 class Graph {
 private:
-    vector<vector<bool>> matrix;
-    vector<vector<int>> list_of_connectivity;
+    vector<vector<bool>> matrix;     // matrix representation of the graph
+
+    vector<vector<int>> list_of_connectivity;   // list representation of the graph
+
+    vector<Data> list_of_values;     // all the value the vertex can contain
+
 public:
+
+
+
     // Add/Remove vertix or edge
     void AddVertex();
     void AddEdge(int i_vetrex,int j_vertex);

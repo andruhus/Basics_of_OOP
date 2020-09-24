@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-template <class Data>
+template <typename Data>
 class Graph {
 private:
     vector<vector<bool>> matrix;     // matrix representation of the graph

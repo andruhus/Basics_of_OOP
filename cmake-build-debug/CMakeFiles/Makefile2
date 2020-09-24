@@ -166,8 +166,8 @@ CMakeFiles\Lab1.dir\clean:
 # Target rules for target CMakeFiles/Google_Tests_run.dir
 
 # All Build rule for target.
-CMakeFiles\Google_Tests_run.dir\all: lib\googletest-master\googletest\CMakeFiles\gtest.dir\all
 CMakeFiles\Google_Tests_run.dir\all: lib\googletest-master\googletest\CMakeFiles\gtest_main.dir\all
+CMakeFiles\Google_Tests_run.dir\all: lib\googletest-master\googletest\CMakeFiles\gtest.dir\all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Google_Tests_run.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Google_Tests_run.dir\depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Google_Tests_run.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Google_Tests_run.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\aaade\Desktop\programs\OOP\Lab1\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target Google_Tests_run"

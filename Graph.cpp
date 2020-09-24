@@ -34,11 +34,16 @@ void Graph<Data>::AddEdge(int i_vetrex, int j_vertex)
     // checking if the input is correct
     int len = list_of_values.length;
     if(i_vetrex >= len || j_vertex >= len)
+    {
         return;
+    }
 
     // checking if the edge does not exist
     if(matrix[i_vetrex][j_vertex])
+    {
         return;
+    }
+
 
     // if everything is correct we can proseed
 
@@ -54,3 +59,63 @@ void Graph<Data>::AddEdge(int i_vetrex, int j_vertex)
 }
 
 
+template <typename Data>
+void Graph<Data>::RemoveVertex(int index_vertex) {
+
+    int len = list_of_values.length;
+    int temp_ind = index_vertex;
+    // checking if the vertex is present 
+    if (temp_ind >= len) {
+        cout << "\nVertex not present!";
+        return;
+    }
+    else {
+        int i;
+
+        // removing the vertex in matrix
+        while (temp_ind < len) {
+            // shifting the rows to left side 
+            for (i = 0; i < len; ++i) {
+                matrix[i][temp_ind] = matrix[i][temp_ind + 1];
+            }
+
+            // shifting the columns upwards 
+            for (i = 0; i < len; ++i) {
+                matrix[temp_ind][i] = matrix[temp_ind + 1][i];
+            }
+            temp_ind++;
+        }
+
+
+
+
+        // removing the vertex in connected list
+        i = 0;
+        while(i < len)
+        {
+            if(list_of_connectivity[i][0] == index_vertex || list_of_connectivity[i][1] == index_vertex)
+            {
+                list_of_connectivity.erase(i);
+            }
+            else
+            {
+                i++;
+            }
+        }
+        // shifting remaining vertexes
+        for(int j = 0;j<len;j++)
+        {
+            if(list_of_connectivity[j][0] > index_vertex)
+                list_of_connectivity[j][0]--;
+            if(list_of_connectivity[j][1] > index_vertex)
+                list_of_connectivity[j][1]--;
+        }
+
+
+        // Deleting the data of the deleting vertex
+        list_of_values.erase(index_vertex);
+
+
+
+    }
+}

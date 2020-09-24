@@ -91,7 +91,7 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
 
         // removing the vertex in connected list
         i = 0;
-        while(i < len)
+        while(i < list_of_connectivity.length)
         {
             if(list_of_connectivity[i][0] == index_vertex || list_of_connectivity[i][1] == index_vertex)
             {
@@ -103,7 +103,7 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
             }
         }
         // shifting remaining vertexes
-        for(int j = 0;j<len;j++)
+        for(int j = 0;j<list_of_connectivity.length;j++)
         {
             if(list_of_connectivity[j][0] > index_vertex)
                 list_of_connectivity[j][0]--;
@@ -118,4 +118,47 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
 
 
     }
+}
+
+
+template <typename Data>
+void Graph<Data>::RemoveEdge(int i_vetrex, int j_vertex)
+{
+    // checking if the input is correct
+    int len = list_of_values.length;
+    if(i_vetrex >= len || j_vertex >= len)
+    {
+        return;
+    }
+
+    // checking if the edge exists
+    if(!matrix[i_vetrex][j_vertex])
+    {
+        return;
+    }
+
+
+    // now we can proseed
+    matrix[i_vetrex][j_vertex] = false;
+    matrix[j_vertex][i_vetrex] = false;
+
+
+    int i = 0;
+    while(i < list_of_connectivity.length)
+    {
+        if (list_of_connectivity[i][0] == i_vetrex && list_of_connectivity[i][1] == j_vertex)
+        {
+            list_of_connectivity.erase(i);
+        }
+        else if (list_of_connectivity[i][1] == i_vetrex && list_of_connectivity[i][0] == j_vertex)
+        {
+            list_of_connectivity.erase(i);
+        }
+        else
+        {
+            i++;
+        }
+    }
+
+
 }

@@ -24,7 +24,7 @@ public:
     void AddVertex(Data value);
     void AddEdge(int i_vetrex, int j_vertex);
     void RemoveVertex(int index_vertex);
-    void RemoveEdge();
+    void RemoveEdge(int i_vetrex, int j_vertex);
 
 
     // Checking if Graph is connected

@@ -10,11 +10,16 @@ using namespace std;
 template <typename Data>
 class Graph {
 private:
+    // the graph is direct
     vector<vector<bool>> matrix;     // matrix representation of the graph
 
     vector<vector<int>> list_of_connectivity;   // list representation of the graph
 
     vector<Data> list_of_values;     // all the value the vertex can contain
+
+
+    // additional method used in IsConnected
+    void traverse(int u, bool visited[]);
 
 public:
 

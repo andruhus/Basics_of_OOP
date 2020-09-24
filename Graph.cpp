@@ -140,17 +140,13 @@ void Graph<Data>::RemoveEdge(int i_vetrex, int j_vertex)
 
     // now we can proseed
     matrix[i_vetrex][j_vertex] = false;
-    matrix[j_vertex][i_vetrex] = false;
+
 
 
     int i = 0;
     while(i < list_of_connectivity.length)
     {
         if (list_of_connectivity[i][0] == i_vetrex && list_of_connectivity[i][1] == j_vertex)
-        {
-            list_of_connectivity.erase(i);
-        }
-        else if (list_of_connectivity[i][1] == i_vetrex && list_of_connectivity[i][0] == j_vertex)
         {
             list_of_connectivity.erase(i);
         }
@@ -161,4 +157,36 @@ void Graph<Data>::RemoveEdge(int i_vetrex, int j_vertex)
     }
 
 
+}
+
+template <typename Data>
+bool Graph<Data>::IsConnected()
+{
+    int len = list_of_values.length;
+    bool *vis = new bool[len];
+    //for all vertex u as start point, check whether all nodes are visible or not
+    for(int u; u < len; u++) {
+        for(int i = 0; i<len; i++)
+            vis[i] = false; //initialize as no node is visited
+        traverse(u, vis);
+        for(int i = 0; i<len; i++) {
+            if(!vis[i]) //if there is a node, not visited by traversal, graph is not connected
+                return false;
+        }
+    }
+    return true;
+}
+
+
+template <typename Data>
+void Graph<Data>::traverse(int u, bool *visited)
+{
+    int len = list_of_values.length;
+    visited[u] = true; //mark v as visited
+    for(int v = 0; v<len; v++) {
+        if(matrix[u][v]) {
+            if(!visited[v])
+                traverse(v, visited);
+        }
+    }
 }

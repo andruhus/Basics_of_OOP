@@ -4,7 +4,7 @@
 
 #include "Graph.h"
 #include <iostream>
-using namespace std;
+
 
 template <typename Data>
 void Graph<Data>::AddVertex(Data value) {
@@ -189,4 +189,49 @@ void Graph<Data>::traverse(int u, bool *visited)
                 traverse(v, visited);
         }
     }
+}
+
+template <typename Data>
+int Graph<Data>::Dist_Between_Vertexes(int i_vertex, int j_vertex) {
+    // The recurrent approach is used
+    int len = list_of_values.length;
+    bool visited[len];
+    for (int i = 0; i < len; ++i) {
+        visited[i] = false;
+    }
+    return calc_Res(i_vertex,j_vertex,visited,len);
+
+}
+
+template <typename Data>
+int Graph<Data>::calc_Res(int i, int j, bool *visited, int len) {
+    // We have to mark this vertex
+    visited[i] = true;
+    // if we the vertices coincide the distance is zero
+    if(i == j)
+        return 0;
+    // Now we define the minimal distance
+    int min_res = -1;
+    // Now we are interrating every edge
+    for(int ind = 0;ind < list_of_connectivity.length;ind++)
+    {
+        // The next vertex should be connected to the i-th vertex and not be visited
+        if(list_of_connectivity[ind][0] == i && !visited[list_of_connectivity[ind][1]])
+        {
+            // Now we calculate the distance between the next vertex and our destination
+            int temp_res = calc_Res(list_of_connectivity[ind][1],j,visited,len);
+            // Analysing the result
+            if(temp_res != None)
+            {
+                // if the result is lower than the minimal result then we redefine it
+                if(min_res == -1 || temp_res < min_res)
+                    min_res = temp_res;
+            }
+        }
+    }
+    // if the minimal result doesn't exist we return None
+    if (min_res == -1)
+        return None;
+    else
+        return min_res + 1;
 }

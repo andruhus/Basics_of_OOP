@@ -21,6 +21,10 @@ private:
     // additional method used in IsConnected
     void traverse(int u, bool visited[]);
 
+
+    // additional method used in Dist_Between_Vertexes
+    int calc_Res(int i,int j,bool* visited,int len);
+
 public:
 
 

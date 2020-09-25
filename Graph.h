@@ -10,7 +10,7 @@ using namespace std;
 template <typename Data>
 class Graph {
 private:
-    // the graph is direct
+
     vector<vector<bool>> matrix;     // matrix representation of the graph
 
     vector<vector<int>> list_of_connectivity;   // list representation of the graph
@@ -43,7 +43,8 @@ public:
     int Dist_Between_Vertexes(int i_vertex, int j_vertex);
 
     // Other algorithms
-
+    bool CheckingIfHasEulerCycle();
+    bool CheckingIfHasEulerCircut();
 
     // Visualisation
 

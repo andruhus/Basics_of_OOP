@@ -55,6 +55,7 @@ void Graph<Data>::AddEdge(int i_vetrex, int j_vertex)
 
     // updating the matrix
     matrix[i_vetrex][j_vertex] = true;
+    matrix[j_vetrex][i_vertex] = true;
 
 }
 
@@ -140,13 +141,17 @@ void Graph<Data>::RemoveEdge(int i_vetrex, int j_vertex)
 
     // now we can proseed
     matrix[i_vetrex][j_vertex] = false;
-
+    matrix[j_vetrex][i_vertex] = false;
 
 
     int i = 0;
     while(i < list_of_connectivity.length)
     {
         if (list_of_connectivity[i][0] == i_vetrex && list_of_connectivity[i][1] == j_vertex)
+        {
+            list_of_connectivity.erase(i);
+        }
+        else if (list_of_connectivity[i][1] == i_vetrex && list_of_connectivity[i][0] == j_vertex)
         {
             list_of_connectivity.erase(i);
         }
@@ -234,4 +239,62 @@ int Graph<Data>::calc_Res(int i, int j, bool *visited, int len) {
         return None;
     else
         return min_res + 1;
+}
+
+template <typename Data>
+bool Graph<Data>::CheckingIfHasEulerCycle() {
+    // I know some theorems about Euler cycle
+
+    // First theorem is if every vertex of the connected graph has even power,
+    // the graph has Euler's cycle
+
+    // the graph has to be connected
+    if(!IsConnected())
+        return false;
+
+
+    // then we check every power in the graph
+    for (int ind = 0; ind < list_of_values.length; ++ind) {
+        int power = 0;
+        for (int i = 0; i < list_of_values.length; ++i) {
+            power += matrix[ind][i];
+        }
+
+        if(power %2 == 1)
+            return false;
+
+    }
+
+    return true;
+}
+
+
+template <typename Data>
+bool Graph<Data>::CheckingIfHasEulerCircut() {
+
+
+    // Second theorem is if only two vertex of the connected graph has odd power,
+    // the graph has Euler's circut
+
+    // the graph has to be connected
+    if(!IsConnected())
+        return false;
+
+
+    // then we check every power in the graph
+    int count = 0 // it counts the number of odd power verteces
+    for (int ind = 0; ind < list_of_values.length; ++ind) {
+        int power = 0;
+        for (int i = 0; i < list_of_values.length; ++i) {
+            power += matrix[ind][i];
+        }
+
+        if(power %2 == 1)
+            count++;
+
+    }
+    if (count == 2)
+        return true;
+    else
+        return false;
 }

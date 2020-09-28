@@ -24,7 +24,7 @@ Time::Time()
     second = 0;
 };
 
-void Time::SetTime(const int& new_hour, const int& new_minute, const int& new_second)
+void Time::SetTime(int new_hour,int new_minute,int new_second)
 {
     if (CheckHour(new_hour) && CheckMinute(new_minute) && CheckMinute(new_second))
     {
@@ -41,4 +41,10 @@ void Time::SetTime(const int& new_hour, const int& new_minute, const int& new_se
         if (!CheckMinute(new_second))
             throw logic_error("Second value is invalid: " + to_string(new_second));
     }
+}
+
+Date::Date() {
+    year = 1970;
+    month = January;
+    day = 1;
 }

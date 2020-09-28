@@ -11,17 +11,18 @@ using namespace std;
 
 
 
-
+// Time and Date were separated in the task, so I decided to separate it too
 class Time {
 protected:
+    // basic time attribute but they starts from 0
     int hour;
     int minute;
     int second;
 
-    bool CheckHour(int new_hour);
+    bool CheckHour(int my_hour);
 
     // it also works for seconds as well
-    bool CheckMinute(int new_minute);
+    bool CheckMinute(int my_minute);
 
 
 public:
@@ -36,21 +37,27 @@ class Date : public Time
 {
 private:
 
-    int day;
+    int day;// it starts from 1
     int month;
     int year;
     int UTC;
+    // this will help us when we check the day
     vector<int> daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31 };
 public:
+    // The tasks in the first sentence
     Date();
+    //// IsLeap function gives not only bool but also modifies daysInMonth
     bool IsLeap();
     bool IsCorrectDate();
     void SetDate(int y,int m,int d,int h,int minut,int s);
     void PrintDate();
+    // The tasks in the second sentence
     void Increase(int y,int m,int d,int h,int minut,int s);
     void Decrease(int y,int m,int d,int h,int minut,int s);
+    // The tasks in the third sentence
     void Week_Day();
 
+    // Some necessary getters
     int GetYear();
     int GetMonth();
     int GetDay();

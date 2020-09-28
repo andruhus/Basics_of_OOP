@@ -170,6 +170,8 @@ TEST(Graph,CheckingIfHasEulerCircuit)
     ASSERT_EQ(true,a.CheckingIfHasEulerCircuit());
 }
 
+
+
 int main(int argc, char* argv[]){
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

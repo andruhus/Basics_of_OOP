@@ -8,14 +8,14 @@
 #include <iostream>
 using namespace std;
 
-bool Time::CheckHour(int new_hour)
+bool Time::CheckHour(int my_hour)
 {
-    return new_hour >= 0 && new_hour < 24;
+    return my_hour >= 0 && my_hour < 24;
 }
 
-bool Time::CheckMinute(int new_minute)
+bool Time::CheckMinute(int my_minute)
 {
-    return new_minute >= 0 && new_minute < 60;
+    return my_minute >= 0 && my_minute < 60;
 }
 
 Time::Time()
@@ -27,12 +27,14 @@ Time::Time()
 
 void Time::SetTime(int new_hour,int new_minute,int new_second)
 {
+    // if it passes the conditions then we can proseed
     if (CheckHour(new_hour) && CheckMinute(new_minute) && CheckMinute(new_second))
     {
         hour = new_hour;
         minute = new_minute;
         second = new_second;
     }
+    // else we throw the error
     else
     {
         if (!CheckHour(new_hour))
@@ -45,6 +47,7 @@ void Time::SetTime(int new_hour,int new_minute,int new_second)
 }
 
 Date::Date() {
+
     year = 2020;
     month = 0;
     day = 1;
@@ -91,11 +94,20 @@ bool Date::IsCorrectDate() {
 }
 
 void Date::SetDate(int y, int m, int d, int h, int minut, int s) {
+    // as year is always correct we just define it
     year = y;
+    // now it is important to modify daysInMonth
     IsLeap();
-    month = m;
-    if(day > daysInMonth[month] || day <= 0)
+    if(month >= 0 && month < 12)
+        throw logic_error("Month value is invalid: " + to_string(m));
+    else
+        month = m;
+
+    if(day >= daysInMonth[month] || day < 0)
         throw logic_error("Day value is invalid: " + to_string(d));
+    else
+        day = d;
+    // The rest has already been defined
     SetTime(h,minut,s);
 }
 
@@ -110,6 +122,7 @@ void Date::PrintDate() {
 }
 
 void Date::Increase(int y, int m, int d, int h, int minut, int s) {
+    // we will go from the bottom to the top
     second += s;
     if(second > 59)
     {
@@ -142,6 +155,7 @@ void Date::Increase(int y, int m, int d, int h, int minut, int s) {
 }
 
 void Date::Decrease(int y, int m, int d, int h, int minut, int s) {
+    // we will go from the bottom to the top
     second -= s;
     if(second < 0)
     {
@@ -175,6 +189,7 @@ void Date::Decrease(int y, int m, int d, int h, int minut, int s) {
 
 Date operator-(Date d1,Date d2)
 {
+    // As we have already had Decrease method, then we can use it
     Date res = d1;
     res.Decrease(d2.GetYear(),
                  d2.GetMonth(),
@@ -221,6 +236,7 @@ void Date::Week_Day() {
     fixed_day.SetDate(2020,8,28,0,0,0);
     Date difference = *this - fixed_day;
     int remainder = 0;
+    // After the subtracting we can get both positive and negative result
     if(year >= 0){
         while(year != 0 && month != 0 && day >= 7)
             difference.Decrease(0,0,7,0,0,0);

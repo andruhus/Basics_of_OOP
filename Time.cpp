@@ -105,7 +105,8 @@ void Date::PrintDate() {
     cout << day << " Days; ";
     cout << hour << " Hours; ";
     cout << minute << " Minutes; ";
-    cout << second << " Seconds; ";
+    cout << second << " Seconds; "<< endl;
+    cout << "The time zone is: " << UTC << endl;
 }
 
 void Date::Increase(int y, int m, int d, int h, int minut, int s) {
@@ -140,6 +141,51 @@ void Date::Increase(int y, int m, int d, int h, int minut, int s) {
     year += y;
 }
 
+void Date::Decrease(int y, int m, int d, int h, int minut, int s) {
+    second -= s;
+    if(second < 0)
+    {
+        second += 60;
+        minute -= 1;
+    }
+    minute -= minut;
+    if(minute < 0)
+    {
+        minute += 60;
+        hour -= 1;
+    }
+    hour -= h;
+    if(hour > 23)
+    {
+        hour %= 24;
+        day -= 1;
+    }
+    day -= d;
+    if(day >= daysInMonth[month]){
+        day %= daysInMonth[month];
+        month--;
+    }
+    month -= m;
+    if(month > 11){
+        month %= 12;
+        year--;
+    }
+    year -= y;
+}
+
+Date operator-(Date d1,Date d2)
+{
+    Date res = d1;
+    res.Decrease(d2.GetYear(),
+                 d2.GetMonth(),
+                 d2.GetDay(),
+                 d2.GetHour(),
+                 d2.GetMinute(),
+                 d2.GetSecond());
+    res.IsLeap();
+    return res;
+}
+
 int Date::GetSecond() {
     return second;
 }
@@ -163,3 +209,45 @@ int Date::GetMonth() {
 int Date::GetYear() {
     return year;
 }
+
+int Date::GetUTC() {
+    return UTC;
+}
+
+void Date::Week_Day() {
+    // We know that 28-th September is Monday
+    // Then if we can find the difference between the dates and get the remainder
+    Date fixed_day;
+    fixed_day.SetDate(2020,8,28,0,0,0);
+    Date difference = *this - fixed_day;
+    int remainder = 0;
+    if(year >= 0){
+        while(year != 0 && month != 0 && day >= 7)
+            difference.Decrease(0,0,7,0,0,0);
+        remainder = difference.day;
+    }
+    else{
+        while(year != 0 && month != 0 && day >= 7)
+            difference.Increase(0,0,7,0,0,0);
+        remainder = difference.day;
+    }
+    switch (remainder)
+    {
+        case 0:
+            cout << "Monday";
+        case 1:
+            cout << "Tuesday";
+        case 2:
+            cout << "Wednesday";
+        case 3:
+            cout << "Thursday";
+        case 4:
+            cout << "Friday";
+        case 5:
+            cout << "Saturday";
+        default:
+            cout << "Sunday";
+    }
+
+}
+

@@ -48,6 +48,8 @@ public:
     void SetDate(int y,int m,int d,int h,int minut,int s);
     void PrintDate();
     void Increase(int y,int m,int d,int h,int minut,int s);
+    void Decrease(int y,int m,int d,int h,int minut,int s);
+    void Week_Day();
 
     int GetYear();
     int GetMonth();
@@ -55,11 +57,12 @@ public:
     int GetHour();
     int GetMinute();
     int GetSecond();
+    int GetUTC();
 
     
 
 };
 
-
+Date operator-(Date d1,Date d2);
 
 #endif //HOMEWORK_TIME_H

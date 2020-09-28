@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
 #include <climits>
 #include "..//Graph.h"
+#include "..//Time.h"
 #include "..//Graph.cpp"
+#include "..//Time.cpp"
 #include <random>
 Graph<int> RandomConnectedGraph()
 {

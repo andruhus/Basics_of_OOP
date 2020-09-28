@@ -23,5 +23,7 @@ CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\lib\googletest-master
 CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\lib\googletest-master\googletest\include\gtest\internal\gtest-type-util.h
 CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\Graph.cpp
 CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\Graph.h
+CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\Time.cpp
+CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\Time.h
 CMakeFiles\Google_Tests_run.dir\tests\mainTest.cpp.obj: ..\tests\mainTest.cpp
 

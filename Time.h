@@ -5,6 +5,7 @@
 #ifndef HOMEWORK_TIME_H
 #define HOMEWORK_TIME_H
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -49,13 +50,13 @@ public:
     //// IsLeap function gives not only bool but also modifies daysInMonth
     bool IsLeap();
     bool IsCorrectDate();
-    void SetDate(int y,int m,int d,int h,int minut,int s);
+    void SetDate(int y,int m,int d,int h,int minut,int s,int u);
     void PrintDate();
     // The tasks in the second sentence
     void Increase(int y,int m,int d,int h,int minut,int s);
     void Decrease(int y,int m,int d,int h,int minut,int s);
     // The tasks in the third sentence
-    void Week_Day();
+    string Week_Day();
 
     // Some necessary getters
     int GetYear();
@@ -71,5 +72,5 @@ public:
 };
 
 Date operator-(Date d1,Date d2);
-
+bool operator==(Date d1,Date d2);
 #endif //HOMEWORK_TIME_H

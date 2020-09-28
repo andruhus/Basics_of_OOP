@@ -336,6 +336,22 @@ C:/Users/aaade/Desktop/programs/OOP/Lab1/Graph.h
 vector
 -
 
+C:/Users/aaade/Desktop/programs/OOP/Lab1/Time.cpp
+Time.h
+C:/Users/aaade/Desktop/programs/OOP/Lab1/Time.h
+string
+-
+stdexcept
+-
+iostream
+-
+
+C:/Users/aaade/Desktop/programs/OOP/Lab1/Time.h
+vector
+-
+string
+-
+
 C:/Users/aaade/Desktop/programs/OOP/Lab1/tests/mainTest.cpp
 gtest/gtest.h
 -
@@ -343,8 +359,12 @@ climits
 -
 ../Graph.h
 C:/Users/aaade/Desktop/programs/OOP/Lab1/Graph.h
+../Time.h
+C:/Users/aaade/Desktop/programs/OOP/Lab1/Time.h
 ../Graph.cpp
 C:/Users/aaade/Desktop/programs/OOP/Lab1/Graph.cpp
+../Time.cpp
+C:/Users/aaade/Desktop/programs/OOP/Lab1/Time.cpp
 random
 -
 

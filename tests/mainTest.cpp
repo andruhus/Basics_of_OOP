@@ -170,6 +170,61 @@ TEST(Graph,CheckingIfHasEulerCircuit)
     ASSERT_EQ(true,a.CheckingIfHasEulerCircuit());
 }
 
+TEST(Date,SetDate){
+    Date date;
+    date.SetDate(1991,0,0,0,0,0,0); // we will just test if it compiles
+}
+
+TEST(Date,IsLeap){
+    Date date;
+    date.SetDate(1900,0,1,0,0,0,0);
+    ASSERT_EQ(false,date.IsLeap());
+    date.SetDate(1901,0,1,0,0,0,0);
+    ASSERT_EQ(false,date.IsLeap());
+    date.SetDate(1904,0,1,0,0,0,0);
+    ASSERT_EQ(true,date.IsLeap());
+    date.SetDate(2000,0,1,0,0,0,0);
+    ASSERT_EQ(true,date.IsLeap());
+}
+
+TEST(Date,PrintDate){
+    Date date;
+    date.PrintDate();// we will just test if it compiles
+}
+
+TEST(Date,Increase){
+    // my example
+    Date d1,d2;
+    d1.SetDate(2020,8,28,0,0,0,0);
+    d2.SetDate(2019,7,27,0,0,0,0);
+    d2.Increase(1,1,1,0,0,0);
+    ASSERT_EQ(d1,d2);
+}
+
+TEST(Date,Decrease){
+    // my example
+    Date d1,d2;
+    d1.SetDate(2020,8,28,0,0,0,0);
+    d2.SetDate(2019,7,27,0,0,0,0);
+    d1.Decrease(1,1,1,0,0,0);
+    ASSERT_EQ(d1,d2);
+}
+
+TEST(Date,Subtract){
+    Date d1,d2,d3;
+    d1.SetDate(2020,8,28,0,0,0,0);
+    d2.SetDate(2019,7,27,0,0,0,0);
+    d3.SetDate(1,1,1,0,0,0,0);
+    ASSERT_EQ(d3,d1-d2);
+}
+
+TEST(Date,Week_Day){
+    // my example
+    Date date;
+    date.SetDate(2020,8,28,17,1,0,0);
+    ASSERT_EQ("Monday",date.Week_Day());
+}
+
 
 
 int main(int argc, char* argv[]){

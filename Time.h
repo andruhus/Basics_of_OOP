@@ -7,24 +7,13 @@
 #include <vector>
 using namespace std;
 
-enum Month
-{
-    January = 0,
-    February = 1,
-    March  = 2,
-    April = 3,
-    May = 4,
-    June = 5,
-    July = 6,
-    August = 7,
-    September = 8,
-    October = 9,
-    November = 10,
-    December = 11
-};
+
+
+
+
 
 class Time {
-private:
+protected:
     int hour;
     int minute;
     int second;
@@ -48,12 +37,26 @@ class Date : public Time
 private:
 
     int day;
-    Month month;
+    int month;
     int year;
-
+    int UTC;
     vector<int> daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31 };
 public:
     Date();
+    bool IsLeap();
+    bool IsCorrectDate();
+    void SetDate(int y,int m,int d,int h,int minut,int s);
+    void PrintDate();
+    void Increase(int y,int m,int d,int h,int minut,int s);
+
+    int GetYear();
+    int GetMonth();
+    int GetDay();
+    int GetHour();
+    int GetMinute();
+    int GetSecond();
+
+    
 
 };
 

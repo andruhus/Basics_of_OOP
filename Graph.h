@@ -31,7 +31,7 @@ public:
 
     // Add/Remove vertix or edge
     void AddVertex(Data value);
-    void AddEdge(int i_vetrex, int j_vertex);
+    void AddEdge(int i_vertex, int j_vertex);
     void RemoveVertex(int index_vertex);
     void RemoveEdge(int i_vetrex, int j_vertex);
 
@@ -44,9 +44,13 @@ public:
 
     // Other algorithms
     bool CheckingIfHasEulerCycle();
-    bool CheckingIfHasEulerCircut();
+    bool CheckingIfHasEulerCircuit();
 
-    // Visualisation
+    // Additional functions for UnitTesting
+    void CreateEmptyGraph(int num_of_vert);
+    void MakingFullGraph(int num_of_vert);
+
+
 
 };
 

@@ -12,11 +12,11 @@ void Graph<Data>::AddVertex(Data value) {
     list_of_values.push_back(value);
 
     // Modifying the matrix implementation
-    for ( int i = 0; i < matrix.length; i++ )
+    for ( int i = 0; i < matrix.size(); i++ )
         matrix[i].push_back(false);
 
     // the column which represents the newly added vertex
-    vector<bool> last_row (matrix.length + 1,false);
+    vector<bool> last_row (matrix.size() + 1,false);
 
     matrix.push_back(last_row);
 
@@ -29,17 +29,17 @@ void Graph<Data>::AddVertex(Data value) {
 
 
 template <typename Data>
-void Graph<Data>::AddEdge(int i_vetrex, int j_vertex)
+void Graph<Data>::AddEdge(int i_vertex, int j_vertex)
 {
     // checking if the input is correct
-    int len = list_of_values.length;
-    if(i_vetrex >= len || j_vertex >= len)
+    int len = list_of_values.size();
+    if(i_vertex >= len || j_vertex >= len)
     {
         return;
     }
 
     // checking if the edge does not exist
-    if(matrix[i_vetrex][j_vertex])
+    if(matrix[i_vertex][j_vertex])
     {
         return;
     }
@@ -49,13 +49,13 @@ void Graph<Data>::AddEdge(int i_vetrex, int j_vertex)
 
     // updating list of connectivity
     vector<int> new_edge (2,0);
-    new_edge[0] = i_vetrex;
-    new_edge[1] = j_vetrex;
+    new_edge[0] = i_vertex;
+    new_edge[1] = j_vertex;
     list_of_connectivity.push_back(new_edge);
 
     // updating the matrix
-    matrix[i_vetrex][j_vertex] = true;
-    matrix[j_vetrex][i_vertex] = true;
+    matrix[i_vertex][j_vertex] = true;
+    matrix[j_vertex][i_vertex] = true;
 
 }
 
@@ -63,7 +63,7 @@ void Graph<Data>::AddEdge(int i_vetrex, int j_vertex)
 template <typename Data>
 void Graph<Data>::RemoveVertex(int index_vertex) {
 
-    int len = list_of_values.length;
+    int len = list_of_values.size();
     int temp_ind = index_vertex;
     // checking if the vertex is present 
     if (temp_ind >= len) {
@@ -74,7 +74,7 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
         int i;
 
         // removing the vertex in matrix
-        while (temp_ind < len) {
+        while (temp_ind < len - 1) {
             // shifting the rows to left side 
             for (i = 0; i < len; ++i) {
                 matrix[i][temp_ind] = matrix[i][temp_ind + 1];
@@ -86,17 +86,22 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
             }
             temp_ind++;
         }
+        // now we have to get rid of unnecessary column and row
+        for (int j = 0; j < matrix.size(); ++j) {
+            matrix[j].pop_back();
+        }
+        matrix.pop_back();
 
 
 
 
         // removing the vertex in connected list
         i = 0;
-        while(i < list_of_connectivity.length)
+        while(i < list_of_connectivity.size())
         {
             if(list_of_connectivity[i][0] == index_vertex || list_of_connectivity[i][1] == index_vertex)
             {
-                list_of_connectivity.erase(i);
+                list_of_connectivity.erase(list_of_connectivity.begin() + i);
             }
             else
             {
@@ -104,7 +109,7 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
             }
         }
         // shifting remaining vertexes
-        for(int j = 0;j<list_of_connectivity.length;j++)
+        for(int j = 0;j<list_of_connectivity.size();j++)
         {
             if(list_of_connectivity[j][0] > index_vertex)
                 list_of_connectivity[j][0]--;
@@ -114,7 +119,7 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
 
 
         // Deleting the data of the deleting vertex
-        list_of_values.erase(index_vertex);
+        list_of_values.erase(list_of_values.begin() + index_vertex);
 
 
 
@@ -123,37 +128,40 @@ void Graph<Data>::RemoveVertex(int index_vertex) {
 
 
 template <typename Data>
-void Graph<Data>::RemoveEdge(int i_vetrex, int j_vertex)
+void Graph<Data>::RemoveEdge(int i_vertex, int j_vertex)
 {
     // checking if the input is correct
-    int len = list_of_values.length;
-    if(i_vetrex >= len || j_vertex >= len)
+    int len = list_of_values.size();
+    if(i_vertex >= len || j_vertex >= len)
     {
         return;
     }
-
+    if(i_vertex == j_vertex)
+    {
+        return;
+    }
     // checking if the edge exists
-    if(!matrix[i_vetrex][j_vertex])
+    if(!matrix[i_vertex][j_vertex])
     {
         return;
     }
 
 
     // now we can proseed
-    matrix[i_vetrex][j_vertex] = false;
-    matrix[j_vetrex][i_vertex] = false;
+    matrix[i_vertex][j_vertex] = false;
+    matrix[j_vertex][i_vertex] = false;
 
 
     int i = 0;
-    while(i < list_of_connectivity.length)
+    while(i < list_of_connectivity.size())
     {
-        if (list_of_connectivity[i][0] == i_vetrex && list_of_connectivity[i][1] == j_vertex)
+        if (list_of_connectivity[i][0] == i_vertex && list_of_connectivity[i][1] == j_vertex)
         {
-            list_of_connectivity.erase(i);
+            list_of_connectivity.erase(list_of_connectivity.begin() + i);
         }
-        else if (list_of_connectivity[i][1] == i_vetrex && list_of_connectivity[i][0] == j_vertex)
+        else if (list_of_connectivity[i][1] == i_vertex && list_of_connectivity[i][0] == j_vertex)
         {
-            list_of_connectivity.erase(i);
+            list_of_connectivity.erase(list_of_connectivity.begin() + i);
         }
         else
         {
@@ -167,10 +175,12 @@ void Graph<Data>::RemoveEdge(int i_vetrex, int j_vertex)
 template <typename Data>
 bool Graph<Data>::IsConnected()
 {
-    int len = list_of_values.length;
+    int len = list_of_values.size();
+    if(len == 0 || len == 1)
+        return false;
     bool *vis = new bool[len];
     //for all vertex u as start point, check whether all nodes are visible or not
-    for(int u; u < len; u++) {
+    for(int u = 0; u < len; u++) {
         for(int i = 0; i<len; i++)
             vis[i] = false; //initialize as no node is visited
         traverse(u, vis);
@@ -186,7 +196,7 @@ bool Graph<Data>::IsConnected()
 template <typename Data>
 void Graph<Data>::traverse(int u, bool *visited)
 {
-    int len = list_of_values.length;
+    int len = list_of_values.size();
     visited[u] = true; //mark v as visited
     for(int v = 0; v<len; v++) {
         if(matrix[u][v]) {
@@ -199,8 +209,8 @@ void Graph<Data>::traverse(int u, bool *visited)
 template <typename Data>
 int Graph<Data>::Dist_Between_Vertexes(int i_vertex, int j_vertex) {
     // The recurrent approach is used
-    int len = list_of_values.length;
-    bool visited[len];
+    int len = list_of_values.size();
+    bool* visited = new bool[len];
     for (int i = 0; i < len; ++i) {
         visited[i] = false;
     }
@@ -218,15 +228,15 @@ int Graph<Data>::calc_Res(int i, int j, bool *visited, int len) {
     // Now we define the minimal distance
     int min_res = -1;
     // Now we are interrating every edge
-    for(int ind = 0;ind < list_of_connectivity.length;ind++)
+    for(int ind = 0;ind < list_of_connectivity.size();ind++)
     {
         // The next vertex should be connected to the i-th vertex and not be visited
-        if(list_of_connectivity[ind][0] == i && !visited[list_of_connectivity[ind][1]])
+        if((list_of_connectivity[ind][0] == i && !visited[list_of_connectivity[ind][1]]) || (list_of_connectivity[ind][1] == i && !visited[list_of_connectivity[ind][0]]))
         {
             // Now we calculate the distance between the next vertex and our destination
             int temp_res = calc_Res(list_of_connectivity[ind][1],j,visited,len);
             // Analysing the result
-            if(temp_res != None)
+            if(temp_res != -1)
             {
                 // if the result is lower than the minimal result then we redefine it
                 if(min_res == -1 || temp_res < min_res)
@@ -236,7 +246,7 @@ int Graph<Data>::calc_Res(int i, int j, bool *visited, int len) {
     }
     // if the minimal result doesn't exist we return None
     if (min_res == -1)
-        return None;
+        return -1;
     else
         return min_res + 1;
 }
@@ -254,9 +264,9 @@ bool Graph<Data>::CheckingIfHasEulerCycle() {
 
 
     // then we check every power in the graph
-    for (int ind = 0; ind < list_of_values.length; ++ind) {
+    for (int ind = 0; ind < list_of_values.size(); ++ind) {
         int power = 0;
-        for (int i = 0; i < list_of_values.length; ++i) {
+        for (int i = 0; i < list_of_values.size(); ++i) {
             power += matrix[ind][i];
         }
 
@@ -270,7 +280,7 @@ bool Graph<Data>::CheckingIfHasEulerCycle() {
 
 
 template <typename Data>
-bool Graph<Data>::CheckingIfHasEulerCircut() {
+bool Graph<Data>::CheckingIfHasEulerCircuit() {
 
 
     // Second theorem is if only two vertex of the connected graph has odd power,
@@ -282,10 +292,10 @@ bool Graph<Data>::CheckingIfHasEulerCircut() {
 
 
     // then we check every power in the graph
-    int count = 0 // it counts the number of odd power verteces
-    for (int ind = 0; ind < list_of_values.length; ++ind) {
+    int count = 0; // it counts the number of odd power verteces
+    for (int ind = 0; ind < list_of_values.size(); ++ind) {
         int power = 0;
-        for (int i = 0; i < list_of_values.length; ++i) {
+        for (int i = 0; i < list_of_values.size(); ++i) {
             power += matrix[ind][i];
         }
 
@@ -297,4 +307,36 @@ bool Graph<Data>::CheckingIfHasEulerCircut() {
         return true;
     else
         return false;
+}
+template <typename Data>
+void Graph<Data>::CreateEmptyGraph(int num_of_vert) {
+    // we won't fill any data here
+    for (int i = 0; i < num_of_vert; ++i) {
+        vector<bool> temp (num_of_vert,false);
+        matrix.push_back(temp);
+    }
+}
+template <typename Data>
+void Graph<Data>::MakingFullGraph(int num_of_vert) {
+
+    for (int i = 0; i < num_of_vert; ++i) {
+
+        for(int j = 0; j<num_of_vert;j++)
+        {
+            if(i<j)
+            {
+                vector<int> tem (2,0);
+                tem[0] = i;
+                tem[1] = j;
+                list_of_connectivity.push_back(tem);
+            }
+            if(i!=j)
+            {
+                matrix[i][j] = true;
+            }
+        }
+
+    }
+
+
 }

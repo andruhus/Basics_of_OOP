@@ -1,6 +1,8 @@
-//!
-//! Created by aaade on 14.09.2020.
-//!
+/*! File with interaction functions for main menu.
+* \file Graph.cpp
+* \author andruhus
+* \version 1.0 30/09/20
+*/
 
 #include "Graph.h"
 #include <iostream>

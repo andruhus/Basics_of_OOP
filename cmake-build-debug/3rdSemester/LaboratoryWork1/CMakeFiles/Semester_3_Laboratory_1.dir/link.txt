@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/Semester_3_Laboratory_1.dir/main.cpp.o  -o Semester_3_Laboratory_1 

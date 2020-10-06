@@ -1,25 +1,25 @@
 #include <gtest/gtest.h>
 #include <climits>
-#include "..//Graph.h"
-#include "..//Time.h"
-#include "..//Graph.cpp"
-#include "..//Time.cpp"
+#include "../source/Graph.h"
+#include "../source/Time.h"
+#include "../source/Graph.cpp"
+#include "../source/Time.cpp"
 #include <random>
 Graph<int> RandomConnectedGraph()
 {
-    // we generate a graph witn 1-10 vertices
+    //! we generate a graph witn 1-10 vertices
     int num_of_vert = rand()%10 + 1;
     Graph<int> a;
-    // generating vertices
+    //! generating vertices
     for (int i = 0; i < num_of_vert; ++i) {
         a.AddVertex(0);
 
     }
 
-    // making a graph full
+    //! making a graph full
     a.MakingFullGraph(num_of_vert);
 
-    // even if we remove (num_of_vert - 2) edges it still remains connected
+    //! even if we remove (num_of_vert - 2) edges it still remains connected
     for (int i = 0; i < num_of_vert-2; ++i) {
         int i_rand = rand()%num_of_vert;
         int j_rand = rand()%num_of_vert;
@@ -31,17 +31,17 @@ Graph<int> RandomConnectedGraph()
 
 Graph<int> RandomUnconnectedGraph()
 {
-    // we generate a graph witn 1-10 vertices
+    //! we generate a graph witn 1-10 vertices
     int num_of_vert = rand()%10 + 1;
     Graph<int> a;
-    // generating vertices
+    //! generating vertices
     for (int i = 0; i < num_of_vert; ++i) {
         a.AddVertex(0);
 
     }
 
 
-    // even if we add (num_of_vert - 2) edges it still remains unconnected
+    //! even if we add (num_of_vert - 2) edges it still remains unconnected
     for (int i = 0; i < num_of_vert-2; ++i) {
         int i_rand = rand()%num_of_vert;
         int j_rand = rand()%num_of_vert;
@@ -53,8 +53,8 @@ Graph<int> RandomUnconnectedGraph()
 
 TEST(Graph,AddVertex) {
     Graph<int> a;
-    // the value doesn't matter here
-    a.AddVertex(0); // we will just test if it compiles
+    //! the value doesn't matter here
+    a.AddVertex(0); //! we will just test if it compiles
 
 
 
@@ -63,8 +63,8 @@ TEST(Graph,AddVertex) {
 TEST(Graph,RemoveVertex) {
     Graph<int> a;
     a.AddVertex(0);
-    // now we have only first vertex
-    a.RemoveVertex(0); // we will just test if it compiles
+    //! now we have only first vertex
+    a.RemoveVertex(0); //! we will just test if it compiles
 
 
 
@@ -72,36 +72,36 @@ TEST(Graph,RemoveVertex) {
 
 TEST(Graph,AddEdge) {
     Graph<int> a;
-    // we add two vertices
+    //! we add two vertices
     a.AddVertex(0);
     a.AddVertex(0);
-    // we will add the only one edge
-    a.AddEdge(0,1);// we will just test if it compiles
-    a.AddEdge(0,1);// an error can appear here
-    a.AddEdge(0,0);// or here
+    //! we will add the only one edge
+    a.AddEdge(0,1);//! we will just test if it compiles
+    a.AddEdge(0,1);//! an error can appear here
+    a.AddEdge(0,0);//! or here
 
 
 }
 
 TEST(Graph,RemoveEdge) {
     Graph<int> a;
-    // we add two vertices
+    //! we add two vertices
     a.AddVertex(0);
     a.AddVertex(0);
-    // we will add the only one vertex
+    //! we will add the only one vertex
     a.AddEdge(0,1);
 
-    //and remove it
-    a.RemoveEdge(0,1);// we will just test if it compiles
-    a.RemoveEdge(0,1);// an error can appear here
-    a.RemoveEdge(0,0);// or here
+    //!and remove it
+    a.RemoveEdge(0,1);//! we will just test if it compiles
+    a.RemoveEdge(0,1);//! an error can appear here
+    a.RemoveEdge(0,0);//! or here
 
 
 }
 
 TEST(Graph,IsConnected) {
     Graph<int> a;
-    // 10 times will be enough for positive result
+    //! 10 times will be enough for positive result
     for (int i = 0; i < 10; ++i) {
         a = RandomConnectedGraph();
         ASSERT_EQ(true,a.IsConnected());
@@ -123,7 +123,7 @@ TEST(Graph,IsnConnected) {
 
 TEST(Graph,Dist_Between_Vertexes)
 {
-    // we will check it on my example
+    //! we will check it on my example
     Graph<int> a;
     a.AddVertex(0);
     a.AddVertex(0);
@@ -135,7 +135,7 @@ TEST(Graph,Dist_Between_Vertexes)
 }
 
 TEST(Graph,CheckingIfHasEulerCycle) {
-    // my example
+    //! my example
     Graph<int> a;
     a.AddVertex(0);
     a.AddVertex(0);
@@ -157,7 +157,7 @@ TEST(Graph,CheckingIfHasEulerCycle) {
 
 TEST(Graph,CheckingIfHasEulerCircuit)
 {
-    // my example
+    //! my example
     Graph<int> a;
     a.AddVertex(0);
     a.AddVertex(0);
@@ -172,7 +172,7 @@ TEST(Graph,CheckingIfHasEulerCircuit)
 
 TEST(Date,SetDate){
     Date date;
-    date.SetDate(1991,0,0,0,0,0,0); // we will just test if it compiles
+    date.SetDate(1991,0,0,0,0,0,0); //! we will just test if it compiles
 }
 
 TEST(Date,IsLeap){
@@ -189,11 +189,11 @@ TEST(Date,IsLeap){
 
 TEST(Date,PrintDate){
     Date date;
-    date.PrintDate();// we will just test if it compiles
+    date.PrintDate();//! we will just test if it compiles
 }
 
 TEST(Date,Increase){
-    // my example
+    //! my example
     Date d1,d2;
     d1.SetDate(2020,8,28,0,0,0,0);
     d2.SetDate(2019,7,27,0,0,0,0);
@@ -202,7 +202,7 @@ TEST(Date,Increase){
 }
 
 TEST(Date,Decrease){
-    // my example
+    //! my example
     Date d1,d2;
     d1.SetDate(2020,8,28,0,0,0,0);
     d2.SetDate(2019,7,27,0,0,0,0);
@@ -219,7 +219,7 @@ TEST(Date,Subtract){
 }
 
 TEST(Date,Week_Day){
-    // my example
+    //! my example
     Date date;
     date.SetDate(2020,8,28,17,1,0,0);
     ASSERT_EQ("Monday",date.Week_Day());
@@ -231,3 +231,4 @@ int main(int argc, char* argv[]){
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
+

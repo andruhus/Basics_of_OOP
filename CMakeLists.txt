@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(Homework)
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lab1 main.cpp)
+add_executable(Lab1 source/main.cpp)
 add_executable(Google_Tests_run tests/mainTest.cpp)
 
 add_subdirectory(lib/googletest-master)

@@ -1,0 +1,56 @@
+\hypertarget{classtesting_1_1_action}{}\doxysection{testing\+::Action$<$ F $>$ Class Template Reference}
+\label{classtesting_1_1_action}\index{testing::Action$<$ F $>$@{testing::Action$<$ F $>$}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtesting_1_1_action_1_1_action_adapter}{Action\+Adapter}}
+\item 
+struct \mbox{\hyperlink{structtesting_1_1_action_1_1_ignore_args}{Ignore\+Args}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a9af08a21ad329331fde856cba9b6dea2}\label{classtesting_1_1_action_a9af08a21ad329331fde856cba9b6dea2}} 
+typedef \mbox{\hyperlink{structtesting_1_1internal_1_1_function}{internal\+::\+Function}}$<$ F $>$\+::Result {\bfseries Result}
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_ae27fda510696a9294f991de5b1abfaf2}\label{classtesting_1_1_action_ae27fda510696a9294f991de5b1abfaf2}} 
+typedef \mbox{\hyperlink{structtesting_1_1internal_1_1_function}{internal\+::\+Function}}$<$ F $>$\+::Argument\+Tuple {\bfseries Argument\+Tuple}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a09e2f9b0928c2a85bff8464369d7cdc9}\label{classtesting_1_1_action_a09e2f9b0928c2a85bff8464369d7cdc9}} 
+{\footnotesize template$<$typename G , typename Is\+Compatible\+Functor  = \+::std\+::is\+\_\+constructible$<$\+::std\+::function$<$\+F$>$, G$>$, typename Is\+No\+Args\+Functor  = \+::std\+::is\+\_\+constructible$<$\+::std\+::function$<$\+Result()$>$, G$>$, typename  = typename \+::std\+::enable\+\_\+if$<$internal\+::disjunction$<$                Is\+Compatible\+Functor, Is\+No\+Args\+Functor$>$\+::value$>$\+::type$>$ }\\{\bfseries Action} (G \&\&fun)
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a5ce44c673e3f91378777b954d88917cd}\label{classtesting_1_1_action_a5ce44c673e3f91378777b954d88917cd}} 
+{\bfseries Action} (\mbox{\hyperlink{classtesting_1_1_action_interface}{Action\+Interface}}$<$ F $>$ $\ast$impl)
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a806bacddaa1f1daf61f89674564bdf0f}\label{classtesting_1_1_action_a806bacddaa1f1daf61f89674564bdf0f}} 
+{\footnotesize template$<$typename Func $>$ }\\{\bfseries Action} (const \mbox{\hyperlink{classtesting_1_1_action}{Action}}$<$ Func $>$ \&action)
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a4468ca2ea5e9f7363271145992d09dba}\label{classtesting_1_1_action_a4468ca2ea5e9f7363271145992d09dba}} 
+bool {\bfseries Is\+Do\+Default} () const
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a5489a68def1d82eb61df819eae52dc8f}\label{classtesting_1_1_action_a5489a68def1d82eb61df819eae52dc8f}} 
+Result {\bfseries Perform} (Argument\+Tuple args) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a260034951551974ae4d6f2549206954d}\label{classtesting_1_1_action_a260034951551974ae4d6f2549206954d}} 
+{\footnotesize template$<$typename G $>$ }\\void {\bfseries Init} (G \&\&g, \+::std\+::true\+\_\+type)
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a508db67a4feb6231b4af7ba8ee7a60b8}\label{classtesting_1_1_action_a508db67a4feb6231b4af7ba8ee7a60b8}} 
+{\footnotesize template$<$typename G $>$ }\\void {\bfseries Init} (G \&\&g, \+::std\+::false\+\_\+type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtesting_1_1_action_a5ce57c7df0f0bd341380776a736db7f5}\label{classtesting_1_1_action_a5ce57c7df0f0bd341380776a736db7f5}} 
+\+::std\+::function$<$ F $>$ {\bfseries fun\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/googletest-\/master/googlemock/include/gmock/gmock-\/actions.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,223 @@
+\hypertarget{class_graph}{}\doxysection{Graph$<$ Data $>$ Class Template Reference}
+\label{class_graph}\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_graph_a4b07a1ac06d5062a5276a58c4762aa9f}{Add\+Vertex}} (Data value)
+\begin{DoxyCompactList}\small\item\em Add/\+Remove vertix or edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a34e3074f08d53e2c67a1eba2b7aacab9}{Add\+Edge}} (int i\+\_\+vertex, int j\+\_\+vertex)
+\item 
+void \mbox{\hyperlink{class_graph_a5a782166fc3f0d875adb07c205c03cdd}{Remove\+Vertex}} (int index\+\_\+vertex)
+\item 
+void \mbox{\hyperlink{class_graph_a58619fe9b8b76a38e0e4b81cfcfbb921}{Remove\+Edge}} (int i\+\_\+vetrex, int j\+\_\+vertex)
+\item 
+bool \mbox{\hyperlink{class_graph_a34c5d78232dc9a1bd169482dc6815e7b}{Is\+Connected}} ()
+\begin{DoxyCompactList}\small\item\em Checking if \mbox{\hyperlink{class_graph}{Graph}} is connected. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_a398d658f35551b6f6fb9d98a79c97b6c}{Dist\+\_\+\+Between\+\_\+\+Vertexes}} (int i\+\_\+vertex, int j\+\_\+vertex)
+\begin{DoxyCompactList}\small\item\em Distance between two vertices. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_a6450613dbf8be06f3dd173fb3d6a2505}{Checking\+If\+Has\+Euler\+Cycle}} ()
+\begin{DoxyCompactList}\small\item\em Other algorithms. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_a6bd0784010175284a71c819c182f8f52}{Checking\+If\+Has\+Euler\+Circuit}} ()
+\item 
+void \mbox{\hyperlink{class_graph_ae36d2ce329f870d09862ef20364a84c1}{Create\+Empty\+Graph}} (int num\+\_\+of\+\_\+vert)
+\begin{DoxyCompactList}\small\item\em Additional functions for Unit\+Testing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a96474244cd354c16cf98c229ee3657b1}\label{class_graph_a96474244cd354c16cf98c229ee3657b1}} 
+void {\bfseries Making\+Full\+Graph} (int num\+\_\+of\+\_\+vert)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_graph_ae74e2b871a3a591555b6daa647a1d2c9}{traverse}} (int u, bool visited\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em all the value the vertex can contain \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_a08b41955e2bb15bf05335ddc72d01bb5}{calc\+\_\+\+Res}} (int i, int j, bool $\ast$visited, int len)
+\begin{DoxyCompactList}\small\item\em additional method used in Dist\+\_\+\+Between\+\_\+\+Vertexes \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a8e7d0dc0f7a5cb3029788afde2649a55}\label{class_graph_a8e7d0dc0f7a5cb3029788afde2649a55}} 
+vector$<$ vector$<$ bool $>$ $>$ {\bfseries matrix}
+\item 
+\mbox{\Hypertarget{class_graph_a8fd6690b37950dff1d3e7952c2b5b7b1}\label{class_graph_a8fd6690b37950dff1d3e7952c2b5b7b1}} 
+vector$<$ vector$<$ int $>$ $>$ \mbox{\hyperlink{class_graph_a8fd6690b37950dff1d3e7952c2b5b7b1}{list\+\_\+of\+\_\+connectivity}}
+\begin{DoxyCompactList}\small\item\em matrix representation of the graph \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_aba801592b1d073579772a1f6ed5647ab}\label{class_graph_aba801592b1d073579772a1f6ed5647ab}} 
+vector$<$ Data $>$ \mbox{\hyperlink{class_graph_aba801592b1d073579772a1f6ed5647ab}{list\+\_\+of\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em list representation of the graph \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a34e3074f08d53e2c67a1eba2b7aacab9}\label{class_graph_a34e3074f08d53e2c67a1eba2b7aacab9}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!AddEdge@{AddEdge}}
+\index{AddEdge@{AddEdge}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{AddEdge()}{AddEdge()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+void \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Add\+Edge (\begin{DoxyParamCaption}\item[{int}]{i\+\_\+vertex,  }\item[{int}]{j\+\_\+vertex }\end{DoxyParamCaption})}
+
+checking if the input is correct
+
+checking if the edge does not exist
+
+if everything is correct we can proseed
+
+updating list of connectivity
+
+updating the matrix\mbox{\Hypertarget{class_graph_a4b07a1ac06d5062a5276a58c4762aa9f}\label{class_graph_a4b07a1ac06d5062a5276a58c4762aa9f}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!AddVertex@{AddVertex}}
+\index{AddVertex@{AddVertex}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{AddVertex()}{AddVertex()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+void \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Add\+Vertex (\begin{DoxyParamCaption}\item[{Data}]{value }\end{DoxyParamCaption})}
+
+
+
+Add/\+Remove vertix or edge. 
+
+Created by aaade on 14.\+09.\+2020. Add the values
+
+Modifying the matrix implementation
+
+the column which represents the newly added vertex
+
+connected list won\textquotesingle{}t change\mbox{\Hypertarget{class_graph_a08b41955e2bb15bf05335ddc72d01bb5}\label{class_graph_a08b41955e2bb15bf05335ddc72d01bb5}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!calc\_Res@{calc\_Res}}
+\index{calc\_Res@{calc\_Res}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{calc\_Res()}{calc\_Res()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+int \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::calc\+\_\+\+Res (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{bool $\ast$}]{visited,  }\item[{int}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+additional method used in Dist\+\_\+\+Between\+\_\+\+Vertexes 
+
+We have to mark this vertex
+
+if we the vertices coincide the distance is zero
+
+Now we define the minimal distance
+
+Now we are interrating every edge
+
+The next vertex should be connected to the i-\/th vertex and not be visited
+
+Now we calculate the distance between the next vertex and our destination
+
+Analysing the result
+
+if the result is lower than the minimal result then we redefine it
+
+if the minimal result doesn\textquotesingle{}t exist we return None\mbox{\Hypertarget{class_graph_a6bd0784010175284a71c819c182f8f52}\label{class_graph_a6bd0784010175284a71c819c182f8f52}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!CheckingIfHasEulerCircuit@{CheckingIfHasEulerCircuit}}
+\index{CheckingIfHasEulerCircuit@{CheckingIfHasEulerCircuit}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{CheckingIfHasEulerCircuit()}{CheckingIfHasEulerCircuit()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+bool \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Checking\+If\+Has\+Euler\+Circuit}
+
+Second theorem is if only two vertex of the connected graph has odd power, the graph has Euler\textquotesingle{}s circut
+
+the graph has to be connected
+
+then we check every power in the graph
+
+it counts the number of odd power verteces\mbox{\Hypertarget{class_graph_a6450613dbf8be06f3dd173fb3d6a2505}\label{class_graph_a6450613dbf8be06f3dd173fb3d6a2505}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!CheckingIfHasEulerCycle@{CheckingIfHasEulerCycle}}
+\index{CheckingIfHasEulerCycle@{CheckingIfHasEulerCycle}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{CheckingIfHasEulerCycle()}{CheckingIfHasEulerCycle()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+bool \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Checking\+If\+Has\+Euler\+Cycle}
+
+
+
+Other algorithms. 
+
+I know some theorems about Euler cycle
+
+First theorem is if every vertex of the connected graph has even power, the graph has Euler\textquotesingle{}s cycle
+
+the graph has to be connected
+
+then we check every power in the graph\mbox{\Hypertarget{class_graph_ae36d2ce329f870d09862ef20364a84c1}\label{class_graph_ae36d2ce329f870d09862ef20364a84c1}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!CreateEmptyGraph@{CreateEmptyGraph}}
+\index{CreateEmptyGraph@{CreateEmptyGraph}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{CreateEmptyGraph()}{CreateEmptyGraph()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+void \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Create\+Empty\+Graph (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+of\+\_\+vert }\end{DoxyParamCaption})}
+
+
+
+Additional functions for Unit\+Testing. 
+
+we won\textquotesingle{}t fill any data here\mbox{\Hypertarget{class_graph_a398d658f35551b6f6fb9d98a79c97b6c}\label{class_graph_a398d658f35551b6f6fb9d98a79c97b6c}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!Dist\_Between\_Vertexes@{Dist\_Between\_Vertexes}}
+\index{Dist\_Between\_Vertexes@{Dist\_Between\_Vertexes}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{Dist\_Between\_Vertexes()}{Dist\_Between\_Vertexes()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+int \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Dist\+\_\+\+Between\+\_\+\+Vertexes (\begin{DoxyParamCaption}\item[{int}]{i\+\_\+vertex,  }\item[{int}]{j\+\_\+vertex }\end{DoxyParamCaption})}
+
+
+
+Distance between two vertices. 
+
+The recurrent approach is used\mbox{\Hypertarget{class_graph_a34c5d78232dc9a1bd169482dc6815e7b}\label{class_graph_a34c5d78232dc9a1bd169482dc6815e7b}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!IsConnected@{IsConnected}}
+\index{IsConnected@{IsConnected}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{IsConnected()}{IsConnected()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+bool \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Is\+Connected}
+
+
+
+Checking if \mbox{\hyperlink{class_graph}{Graph}} is connected. 
+
+for all vertex u as start point, check whether all nodes are visible or not
+
+initialize as no node is visited
+
+if there is a node, not visited by traversal, graph is not connected\mbox{\Hypertarget{class_graph_a58619fe9b8b76a38e0e4b81cfcfbb921}\label{class_graph_a58619fe9b8b76a38e0e4b81cfcfbb921}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!RemoveEdge@{RemoveEdge}}
+\index{RemoveEdge@{RemoveEdge}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{RemoveEdge()}{RemoveEdge()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+void \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Remove\+Edge (\begin{DoxyParamCaption}\item[{int}]{i\+\_\+vetrex,  }\item[{int}]{j\+\_\+vertex }\end{DoxyParamCaption})}
+
+checking if the input is correct
+
+checking if the edge exists
+
+now we can proseed\mbox{\Hypertarget{class_graph_a5a782166fc3f0d875adb07c205c03cdd}\label{class_graph_a5a782166fc3f0d875adb07c205c03cdd}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!RemoveVertex@{RemoveVertex}}
+\index{RemoveVertex@{RemoveVertex}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{RemoveVertex()}{RemoveVertex()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+void \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::Remove\+Vertex (\begin{DoxyParamCaption}\item[{int}]{index\+\_\+vertex }\end{DoxyParamCaption})}
+
+checking if the vertex is present
+
+removing the vertex in matrix
+
+shifting the rows to left side
+
+shifting the columns upwards
+
+now we have to get rid of unnecessary column and row
+
+removing the vertex in connected list
+
+shifting remaining vertexes
+
+Deleting the data of the deleting vertex\mbox{\Hypertarget{class_graph_ae74e2b871a3a591555b6daa647a1d2c9}\label{class_graph_ae74e2b871a3a591555b6daa647a1d2c9}} 
+\index{Graph$<$ Data $>$@{Graph$<$ Data $>$}!traverse@{traverse}}
+\index{traverse@{traverse}!Graph$<$ Data $>$@{Graph$<$ Data $>$}}
+\doxysubsubsection{\texorpdfstring{traverse()}{traverse()}}
+{\footnotesize\ttfamily template$<$typename Data $>$ \\
+void \mbox{\hyperlink{class_graph}{Graph}}$<$ Data $>$\+::traverse (\begin{DoxyParamCaption}\item[{int}]{u,  }\item[{bool}]{visited\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+all the value the vertex can contain 
+
+additional method used in Is\+Connected mark v as visited
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

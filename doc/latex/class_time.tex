@@ -1,0 +1,63 @@
+\hypertarget{class_time}{}\doxysection{Time Class Reference}
+\label{class_time}\index{Time@{Time}}
+
+
+\mbox{\hyperlink{class_time}{Time}} and \mbox{\hyperlink{class_date}{Date}} were separated in the task, so I decided to separate it too.  
+
+
+
+
+{\ttfamily \#include $<$Time.\+h$>$}
+
+Inheritance diagram for Time\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_time}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_time_a9b62f7b5799e48d2b2ac2bf2aa1ea4a9}{Set\+Time}} (int new\+\_\+hour, int new\+\_\+minute, int new\+\_\+second)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_time_a204c8796efc4222481ab1990dafea599}\label{class_time_a204c8796efc4222481ab1990dafea599}} 
+bool {\bfseries Check\+Hour} (int my\+\_\+hour)
+\item 
+\mbox{\Hypertarget{class_time_a3cba78242b5435f4ae0fcc2d1c0f9711}\label{class_time_a3cba78242b5435f4ae0fcc2d1c0f9711}} 
+bool \mbox{\hyperlink{class_time_a3cba78242b5435f4ae0fcc2d1c0f9711}{Check\+Minute}} (int my\+\_\+minute)
+\begin{DoxyCompactList}\small\item\em it also works for seconds as well \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_time_a497d35aa44ea40706dbab08f7a31d069}\label{class_time_a497d35aa44ea40706dbab08f7a31d069}} 
+int \mbox{\hyperlink{class_time_a497d35aa44ea40706dbab08f7a31d069}{hour}}
+\begin{DoxyCompactList}\small\item\em basic time attribute but they starts from 0 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_time_a6c2e13147da34803a9784aa2b8bf8da8}\label{class_time_a6c2e13147da34803a9784aa2b8bf8da8}} 
+int {\bfseries minute}
+\item 
+\mbox{\Hypertarget{class_time_a63c9e64c7b453e10ba0f7f28bfedbcbf}\label{class_time_a63c9e64c7b453e10ba0f7f28bfedbcbf}} 
+int {\bfseries second}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_time}{Time}} and \mbox{\hyperlink{class_date}{Date}} were separated in the task, so I decided to separate it too. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_time_a9b62f7b5799e48d2b2ac2bf2aa1ea4a9}\label{class_time_a9b62f7b5799e48d2b2ac2bf2aa1ea4a9}} 
+\index{Time@{Time}!SetTime@{SetTime}}
+\index{SetTime@{SetTime}!Time@{Time}}
+\doxysubsubsection{\texorpdfstring{SetTime()}{SetTime()}}
+{\footnotesize\ttfamily void Time\+::\+Set\+Time (\begin{DoxyParamCaption}\item[{int}]{new\+\_\+hour,  }\item[{int}]{new\+\_\+minute,  }\item[{int}]{new\+\_\+second }\end{DoxyParamCaption})}
+
+if it passes the conditions then we can proseed
+
+else we throw the error
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Time.\+h\item 
+Time.\+cpp\end{DoxyCompactItemize}

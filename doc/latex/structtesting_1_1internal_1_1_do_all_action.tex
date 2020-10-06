@@ -1,0 +1,31 @@
+\hypertarget{structtesting_1_1internal_1_1_do_all_action}{}\doxysection{testing\+::internal\+::Do\+All\+Action$<$ Actions $>$ Struct Template Reference}
+\label{structtesting_1_1internal_1_1_do_all_action}\index{testing::internal::DoAllAction$<$ Actions $>$@{testing::internal::DoAllAction$<$ Actions $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtesting_1_1internal_1_1_do_all_action_a7328dad6615578e385950249f9259139}\label{structtesting_1_1internal_1_1_do_all_action_a7328dad6615578e385950249f9259139}} 
+{\footnotesize template$<$typename R , typename... Args$>$ }\\{\bfseries operator Action$<$ R} (Args...)$>$() const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtesting_1_1internal_1_1_do_all_action_ac4d9fb46158cf0bd9a177c1ffe76b3ac}\label{structtesting_1_1internal_1_1_do_all_action_ac4d9fb46158cf0bd9a177c1ffe76b3ac}} 
+std\+::tuple$<$ Actions... $>$ {\bfseries actions}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtesting_1_1internal_1_1_do_all_action_a1eded97950a2d77c558e90ccb695a7dd}\label{structtesting_1_1internal_1_1_do_all_action_a1eded97950a2d77c558e90ccb695a7dd}} 
+{\footnotesize template$<$typename T $>$ }\\using {\bfseries Non\+Final\+Type} = typename std\+::conditional$<$ std\+::is\+\_\+scalar$<$ T $>$\+::value, T, const T \& $>$\+::type
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtesting_1_1internal_1_1_do_all_action_a8c1b394ca6b7a9719d15b6f48859d8ad}\label{structtesting_1_1internal_1_1_do_all_action_a8c1b394ca6b7a9719d15b6f48859d8ad}} 
+{\footnotesize template$<$typename ActionT , size\+\_\+t... I$>$ }\\std\+::vector$<$ ActionT $>$ {\bfseries Convert} (\mbox{\hyperlink{structtesting_1_1internal_1_1_index_sequence}{Index\+Sequence}}$<$ I... $>$) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/googletest-\/master/googlemock/include/gmock/gmock-\/actions.\+h\end{DoxyCompactItemize}
